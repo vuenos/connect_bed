@@ -59,14 +59,23 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
 
-  const {name, price, image, brand, category, countInStock, description} = req.body;
+  const {name, price, mall, retailPrice, manageCode, salesState, option, prdInfo, supplyPrice, image, brand, modelName, manufacture, category, countInStock, description} = req.body;
 
   const product = new Product({
     name,
     price,
+    mall,
+    retailPrice,
+    manageCode,
+    salesState,
+    option,
+    prdInfo,
+    supplyPrice,
     user: req.user._id,
     image,
     brand,
+    modelName,
+    manufacture,
     category,
     countInStock,
     numReviews: 0,
@@ -84,11 +93,20 @@ const updateProduct = asyncHandler(async (req, res) => {
   const {
     name,
     price,
-    description,
+    mall,
+    retailPrice,
+    manageCode,
+    salesState,
+    option,
+    prdInfo,
+    supplyPrice,
     image,
     brand,
+    modelName,
+    manufacture,
     category,
     countInStock,
+    description,
   } = req.body
 
   const product = await Product.findById(req.params.id)
@@ -96,9 +114,18 @@ const updateProduct = asyncHandler(async (req, res) => {
   if (product) {
     product.name = name
     product.price = price
+    product.mall = mall
+    product.retailPrice = retailPrice
+    product.manageCode = manageCode
+    product.salesState = salesState
+    product.option = option
+    product.prdInfo = prdInfo
+    product.supplyPrice = supplyPrice
     product.description = description
     product.image = image
     product.brand = brand
+    product.modelName = modelName
+    product.manufacture = manufacture
     product.category = category
     product.countInStock = countInStock
 

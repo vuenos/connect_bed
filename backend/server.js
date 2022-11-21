@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
+import cors from "cors"
 import morgan from 'morgan'
 import bodyParser from "body-parser";
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

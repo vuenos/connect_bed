@@ -31,6 +31,26 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    mall: {
+      type: String,
+      required: true,
+    },
+    manageCode: {
+      type: String,
+      required: true,
+    },
+    salesState : {
+      type: String,
+      required: true,
+    },
+    option: {
+      type: String,
+      required: false,
+    },
+    prdInfo: {
+      type: String,
+      required: false,
+    },
     brand: {
       type: String,
       required: true,
@@ -41,23 +61,41 @@ const productSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
     reviews: [reviewSchema],
     rating: {
       type: Number,
-      required: true,
+      required: false,
       default: 0,
     },
     numReviews: {
       type: Number,
-      required: true,
+      required: false,
       default: 0,
     },
     price: {
       type: Number,
       required: true,
       default: 0,
+    },
+    retailPrice: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    supplyPrice: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    modelName: {
+      type: String,
+      required: false,
+    },
+    manufacture: {
+      type: String,
+      required: true,
     },
     countInStock: {
       type: Number,
