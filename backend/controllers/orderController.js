@@ -6,13 +6,43 @@ import Order from '../models/orderModel.js'
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
   const {
-    orderItems,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
+    orderItems, // 상품명
+    orderStatus, // 배송상태
+    orderName, // 주문자명
+    recipientName,  // 수취인
+    shippingCode, // 배송코드
+    invoiceNumber, // 송장번호
+    orderNumber, // 주문번호
+    productOrderNumber, // 상품주문번호
+    productNumber, // 상품번호
+    productOption, // 상품옵션
+    orderQuantity, // 주문상품수량
+    itemsPrice, //판매금액
+    totalPrice, // 총판매금액
+    discountPrice, // 할인금액
+    paymentPrice, // 결제금액
+    shippingFee, // 배송비
+    addShippingFee, // 지역추가배송비,
+    rcpPhnNum1, // 수취인전화번호1
+    rcpPhnNum2, // 수취인전화번호2
+    zipCode, // 우편번호
+    shippingAddress, //수취인주소
+    ordererPhnNum, // 주문자전화번호1
+    shippingMemo, // 배송메모
+    shippingDate, // 배송예정일
+    howPayShipping, // 배송비지불방법
+    shippingCostType, // 배송비유형
+    shippingBundleNum, // 배송비묶음번호
+    collectionDate, // 수집일시
+    paymentDate, // 결제일시
+    orderDate, // 주문일시
+    lastOrdStatChgDate, // 최종주문상태변경일시
+    ownProductCode, // 자체상품코드
+    prdOptCode, // 상품옵션코드
+    shippingMethod, // 배송방법
+    ochShipmentOrder, // 온채널출고지시여부,
+    paymentMethod, // 결제수단
+    taxPrice, // 세금
   } = req.body
 
   if (orderItems && orderItems.length === 0) {
@@ -21,14 +51,44 @@ const addOrderItems = asyncHandler(async (req, res) => {
     return
   } else {
     const order = new Order({
-      orderItems,
+      orderItems, // 상품명
       user: req.user._id,
-      shippingAddress,
-      paymentMethod,
-      itemsPrice,
-      taxPrice,
-      shippingPrice,
-      totalPrice,
+      orderStatus, // 배송상태
+      orderName, // 주문자명
+      recipientName,  // 수취인
+      shippingCode, // 배송코드
+      invoiceNumber, // 송장번호
+      orderNumber, // 주문번호
+      productOrderNumber, // 상품주문번호
+      productNumber, // 상품번호
+      productOption, // 상품옵션
+      orderQuantity, // 주문상품수량
+      itemsPrice, //판매금액
+      totalPrice, // 총판매금액
+      discountPrice, // 할인금액
+      paymentPrice, // 결제금액
+      shippingFee, // 배송비
+      addShippingFee, // 지역추가배송비,
+      rcpPhnNum1, // 수취인전화번호1
+      rcpPhnNum2, // 수취인전화번호2
+      zipCode, // 우편번호
+      shippingAddress, //수취인주소
+      ordererPhnNum, // 주문자전화번호1
+      shippingMemo, // 배송메모
+      shippingDate, // 배송예정일
+      howPayShipping, // 배송비지불방법
+      shippingCostType, // 배송비유형
+      shippingBundleNum, // 배송비묶음번호
+      collectionDate, // 수집일시
+      paymentDate, // 결제일시
+      orderDate, // 주문일시
+      lastOrdStatChgDate, // 최종주문상태변경일시
+      ownProductCode, // 자체상품코드
+      prdOptCode, // 상품옵션코드
+      shippingMethod, // 배송방법
+      ochShipmentOrder, // 온채널출고지시여부,
+      paymentMethod, // 결제수단
+      taxPrice, // 세금
     })
 
     const createdOrder = await order.save()
